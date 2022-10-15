@@ -11,7 +11,7 @@ var blocks = new Array();
 for (i = 0; i < block_num * block_num; i++) {
   coords = get_coordinates(i);
   blocks.push({
-    value: Math.round(Math.random() * 3),
+    value: 0,
     x: coords.x,
     y: coords.y,
   });
@@ -22,6 +22,9 @@ function get_index(x, y) {
 }
 
 var current_placement = 3;
+var block_counts = new Array();
+var carbon_stats = new Array();
+const stat_size = 20;
 
 const svg_city = d3.select("svg#city");
 const margin = { left: 50, right: 50, top: 50, bottom: 50 };
@@ -83,8 +86,14 @@ function update_blocks() {
             let index = get_index(target.datum().x, target.datum().y);
             blocks[index].value = current_placement;
             update_blocks();
-            console.log(get_carbons(blocks, 10));
-            console.log(get_statistics(blocks));
+            block_counts.push(get_statistics(blocks));
+            carbon_stats.push(get_carbons(blocks, 10));
+            if (block_counts.length > stat_size){
+                block_counts.pop(0);
+            }
+            if (carbon_stats.length > stat_size){
+                carbon_stats.pop(0);
+            }
            })
       },
       (update) => {

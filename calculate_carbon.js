@@ -28,7 +28,13 @@ function get_statistics(blocks){
     let res_blocks = blocks.filter((b)=>b.value == 1).length;
     let com_blocks = blocks.filter((b)=>b.value == 2).length;
     let green_blocks = blocks.filter((b)=>b.value == 3).length;
-    return [res_blocks, com_blocks, green_blocks];
+    let empty_blocks = blocks.length - res_blocks - com_blocks - green_blocks;
+    return {
+        "residence": res_blocks,
+        "commercial": com_blocks,
+        "green": green_blocks,
+        "empty":empty_blocks
+    };
 }
 
 function calculate_carbon_emissions(blocks){
