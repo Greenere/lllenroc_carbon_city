@@ -102,14 +102,14 @@ function update_blocks() {
             blocks[index].value = current_placement;
             update_blocks();
             block_counts.push(get_statistics(blocks));
-            carbon_stats.push(get_carbons(blocks, 10));
+            carbon_stats.push(get_carbons(blocks, 100));
             if (block_counts.length > stat_size){
                 block_counts.shift();
             }
             if (carbon_stats.length > stat_size){
                 carbon_stats.shift();
             }
-            update_carbon_chart();
+            update_carbon_chart_histogram();
            })
       },
       (update) => {

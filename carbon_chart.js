@@ -69,4 +69,40 @@ function update_carbon_chart() {
     });
 }
 
-update_carbon_chart();
+function update_carbon_chart_histogram() {
+  carbon_emission_data = get_emission_data(carbon_stats);
+
+  carbon_range = d3.extent(carbon_emission_data.map((d) => d.emission));
+  emission_scale = d3.scaleLinear(carbon_range, [carbon_height, 0]);
+  histo = d3.histogram()
+  .value(d=>d)
+  .domain(carbon_range)
+  .thresholds(100)
+  for (i = 0; i < carbon_stats.length; i++){
+    data = carbon_stats[i]
+
+    bins = histo(data)
+    size_scale = d3.scaleLinear(d3.extent(bins, (d)=>d.length),[0,10])
+
+  carbon_chart
+    .selectAll(`circle.carbon_dot_${i}`)
+    .data(bins)
+    .join((enter) => {
+      enter
+        .append("circle")
+        .attr("class", `carbon_dot_${i}`)
+        .attr("cx", iteration_scale(i))
+        .attr("cy", (d) => emission_scale(d.x0))
+        .attr("r", (d)=>size_scale(d.length))
+        .attr("opaicty", 0.5)
+        .attr("fill", "red");
+    },
+    (update)=>{
+      update.attr("cx", iteration_scale(i))
+      .attr("cy", (d) => emission_scale(d.x0))
+      .attr("r", (d)=>size_scale(d.length))
+    });
+  }
+}
+
+update_carbon_chart_histogram();
