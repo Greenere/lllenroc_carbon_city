@@ -1,19 +1,39 @@
-
+/* 
 .header {
   padding-top: 20px;
-  background-color: black;
+  background-color: white;
   text-align: center;
-  color: white;
+  color: #189AB4;
+} */
+
+/* .icon {
+  background-color: white;
+  color: blue;
+} */
+
+.title_text {
+  color: #186f83;
+  font-weight: bold;
+  font-family: Monaco;
 }
 
-.icon {
-  background-color: white;
-  color: black;
+.text_color {
+  color: #186f83;
 }
+
+.chart_title {
+  color: #186f83;
+  font-weight: bold;
+  font-family: Monaco;
+  text-align: center;
+}
+
 
 .game {
-  background-color: #adb5bd;
-  color: black;
+  background-color: #e4f3f5;
+  padding-top: 20px;
+  color: #186f83;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -38,4 +58,4 @@ g.mouseover text {
 g.mouseover text:first-child {
   font-weight: bold;
 }
-/*  colors: #17becf #1f77b4 #ff7f0e */
+/*  colors: #05445E #189AB4 #75E6DA #D4F1F4 */

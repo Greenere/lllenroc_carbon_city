@@ -15,20 +15,35 @@
   </head>
 
   <body>
+
     <div class="container mt-3 pt-5">
-      <div class="row header">
+      <!-- <div class="row header">
         <h1>Carbon City</h1>
         <p>Posted by LLLENROC</p>
       </div>
       <br />
-      <br />
+      <br /> -->
 
       <div class="row">
+        <div class="col-sm-1"></div> 
+
+        <div class="col-sm-2 icon title_text ">
+          <h1>Carbon City</h1>
+          <br />
+          <p>Posted by LLLENROC</p>
+        </div>
+
+        <div class="col-sm-6 game  rounded title_text">Urban Planning Game
+          <div>
+            <svg id="city" width=600 height=600></svg>
+          </div>        
+        </div>
+
         <div class="col-sm-2 icon">
           <table class="table table-borderless"> 
             <thead>
               <tr>
-                <th>Icon Cube</th>
+                <th class="text_color ">Icon Cube</th>
               </tr>
             </thead>
             <tbody>
@@ -66,9 +81,9 @@
               </tr>
               <tr>
                 <td>
-                  <p>Current Placement:
+                  <p class="text_color ">Current Placement:
                     <!-- <input id="placement_value" type="hidden" value="" /> -->
-                    <span id="placement_value"></span>
+                    <span id="placement_value" class="text_color "></span>
                   </p>
                 </td>
               </tr>
@@ -76,31 +91,35 @@
           </table>
         </div>
 
-        <div class="col-sm-10 game">Urban Planning Game
-          <div>
-            <svg id="city" width=600 height=600></svg>
-          </div>        
-        </div>
-
+        <div class="col-sm-1"></div> 
       </div>
       <br />
       <br />
 
-      <div class="row">
-        <p class="graph">
-          <p>Carbon Emission Chart</p>
-          <br />
-          <svg id="carbon_chart" height="500" width="1200"></svg>
-        </p>
-      </div>
 
       <div class="row">
-        <p class="graph">
-          <p>People Chart</p>
-          <br />
-          <svg id="ratio_chart" height="500" width="1200"></svg>
-        </p>
+        <div class="col-sm-1"></div> 
+        <div class="col-sm-10">
+          <p class="graph">
+            <p class="chart_title">Carbon Emission Chart</p>
+            <br />
+            <svg id="carbon_chart" height="500" width="1200"></svg>
+          </p>
+        </div> 
+        <div class="col-sm-1"></div> 
       </div>
+
+      <!-- <div class="row">
+        <div class="col-sm-1"></div> 
+        <div class="col-sm-10">
+          <p class="graph">
+            <p class="chart_title">People Chart</p>
+            <br />
+            <svg id="ratio_chart" height="500" width="1200"></svg>
+          </p>
+        </div> 
+        <div class="col-sm-1"></div> 
+      </div>  -->
 
     </div>
 
