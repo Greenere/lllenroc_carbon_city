@@ -42,9 +42,9 @@ var carbon_stats = new Array();
 const stat_size = 20;
 
 const svg_city = d3.select("svg#city");
-const margin = { left: 50, right: 50, top: 50, bottom: 50 };
-const city_width = svg_city.attr("width") - margin.left - margin.right;
-const city_height = svg_city.attr("height") - margin.top - margin.bottom;
+const city_margin = { left: 50, right: 50, top: 50, bottom: 50 };
+const city_width = svg_city.attr("width") - city_margin.left - city_margin.right;
+const city_height = svg_city.attr("height") - city_margin.top - city_margin.bottom;
 
 const block_size = (city_width / block_num) * 0.85;
 const block_gap = (city_width / block_num) * 0.15;
@@ -52,7 +52,7 @@ const block_gap = (city_width / block_num) * 0.15;
 const block_group = svg_city
   .append("g")
   .attr("id", "block_group")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+  .attr("transform", `translate(${city_margin.left}, ${city_margin.top})`);
 
 const color_scale = (x) => {
   if (x == 1) { // residence
@@ -109,6 +109,7 @@ function update_blocks() {
             if (carbon_stats.length > stat_size){
                 carbon_stats.shift();
             }
+            update_carbon_chart();
            })
       },
       (update) => {
