@@ -89,10 +89,10 @@ function update_blocks() {
             block_counts.push(get_statistics(blocks));
             carbon_stats.push(get_carbons(blocks, 10));
             if (block_counts.length > stat_size){
-                block_counts.pop(0);
+                block_counts.shift();
             }
             if (carbon_stats.length > stat_size){
-                carbon_stats.pop(0);
+                carbon_stats.shift();
             }
            })
       },
