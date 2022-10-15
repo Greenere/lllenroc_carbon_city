@@ -21,7 +21,22 @@ function get_index(x, y) {
   return x + y * block_num;
 }
 
-var current_placement = 3;
+var current_placement = 0;
+
+function changePlacement1() {
+  current_placement = 1;
+  document.getElementById('placement_value').innerHTML = "Residence";
+}
+function changePlacement2() {
+  current_placement = 2;
+  document.getElementById('placement_value').innerHTML = "Commercial";
+}
+function changePlacement3() {
+  current_placement = 3;
+  document.getElementById('placement_value').innerHTML = "Green";
+}
+
+
 var block_counts = new Array();
 var carbon_stats = new Array();
 const stat_size = 20;
@@ -105,5 +120,7 @@ function update_blocks() {
 update_blocks();
 
 
-console.log(get_carbons(blocks, 10));
-console.log(get_statistics(blocks));
+// console.log(get_carbons(blocks, 10));
+// console.log(get_statistics(blocks));
+// console.log(block_counts);
+// console.log(carbon_stats);

@@ -1,0 +1,41 @@
+
+.header {
+  padding-top: 20px;
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+
+.icon {
+  background-color: white;
+  color: black;
+}
+
+.game {
+  background-color: #adb5bd;
+  color: black;
+  text-align: center;
+}
+
+/* #lineChart {
+
+} */
+
+.gridlines line {
+  stroke: #bbb;
+}
+
+.gridlines .domain {
+  stroke: none;
+}
+
+g.lollipop line.stick {
+  stroke-width: 2px;
+}
+g.mouseover text {
+  font-family: Arial, sans-serif;
+}
+g.mouseover text:first-child {
+  font-weight: bold;
+}
+/*  colors: #17becf #1f77b4 #ff7f0e */
