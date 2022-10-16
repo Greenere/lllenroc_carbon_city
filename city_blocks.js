@@ -106,6 +106,8 @@ function random() {
   update_counts_and_carbon();
   update_carbon_chart_histogram();
 }
+
+
 function reset() {
   document.getElementById('placement_value').innerHTML = "";
 // remove icon buttons active status
@@ -122,6 +124,12 @@ function reset() {
   update_carbon_chart_histogram();
 }
 
+function loadBest() {
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.remove('active');
+}
 
 var block_counts = new Array();
 var carbon_stats = new Array();
