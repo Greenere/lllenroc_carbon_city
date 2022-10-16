@@ -1,10 +1,10 @@
 const random_walk_num = 100;
 const histo_bin_num = 20;
 
-var target_residence = 30;
+var target_residence = 0;
 
 var current_best_blocks = null;
-var current_best_carbon = 1000000000;
+var current_best_carbon = Infinity;
 
 // Generate basic blocks
 const block_num = 10;
@@ -213,9 +213,13 @@ function update_card_texts() {
     "Avg Carbon:\n" + cur_carbon;
   document.getElementById("unemployment_stat").innerText =
     "Unemployment:\n" + unemployment;
+  document.getElementById("target_residence").innerText =
+    "Target Residence:\n" + target_residence;
+  document.getElementById("best_carbon").innerText =
+    "Best Carbon:\n" + current_best_carbon;
 
   if (unemployment < 1 && cur.residence > target_residence - 1) {
-    if (cur_carbon < current_best_carbon) {
+    if (cur_carbon < current_best_carbon && cur_carbon > 0) {
       current_best_carbon = cur_carbon;
       current_best_blocks = JSON.parse(JSON.stringify(blocks));
     }

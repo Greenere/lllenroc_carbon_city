@@ -43,7 +43,7 @@ carbon_chart.append("text")
 .attr("y", 180)
 .attr("transform",`rotate(-90, -30 ${carbon_height / 2})`)
 .attr("text-anchor","middle")
-.text("Carbon Emissions >>")
+.text("Estimated Carbon Emissions per Capita")
 .attr('fill', 'slategray')
 
 function get_emission_data(carbon_stats){
