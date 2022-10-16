@@ -31,6 +31,18 @@ carbon_chart_labels.selectAll('line.iteration_label')
 .attr('y2', carbon_height)
 .attr('stroke', 'slategray')
 
+carbon_chart.append("text") 
+.attr("x", 1100)
+.attr("y", 430)
+.attr("text-anchor","middle")
+.text("Iteration");
+carbon_chart.append("text") 
+.attr("x", -30)
+.attr("y", 200)
+.attr("transform",`rotate(-90, -30 ${carbon_height / 2})`)
+.attr("text-anchor","middle")
+.text("Carbon Emissions")
+
 function get_emission_data(carbon_stats){
   var carbon_emission_data = new Array();
   for (i = 0; i < carbon_stats.length; i++) {
