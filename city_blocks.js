@@ -1,6 +1,11 @@
 const random_walk_num = 100;
 const histo_bin_num = 20;
 
+var target_residence = 30;
+
+var current_best_blocks = null;
+var current_best_carbon = 1000000000;
+
 // Generate basic blocks
 const block_num = 10;
 function get_coordinates(index) {
@@ -81,8 +86,20 @@ function random() {
   document.getElementById("park_button").classList.remove('active');
   document.getElementById("remove_button").classList.remove('active');
 
+  cur_residence = 0
   blocks.forEach(d=>{
-    d.value = Math.round(Math.random()*3);
+    if (cur_residence < target_residence){
+    nex = Math.round(Math.random()*3);
+    } else {
+      nex = 2 + Math.round(Math.random()*4);
+      if (nex == 4){
+        nex = 0;
+      }
+    }
+    if (nex  == 1){
+      cur_residence += 1;
+    }
+    d.value = nex;
   })
   update_blocks();
   update_card_texts();
@@ -155,13 +172,20 @@ function update_card_texts(){
     cur_stat = get_carbons(blocks, random_walk_num);
   }
   const average = array => array.reduce((a, b) => a + b) / array.length;
+  const cur_carbon = average(cur_stat);
   const unemployment = cur.commercial > cur.residence? 0: cur.residence - cur.commercial;
   document.getElementById("res_block_stat").innerText = "Residence:" + cur.residence;
   document.getElementById("com_block_stat").innerText = "Commercial:" + cur.commercial;
   document.getElementById("park_block_stat").innerText = "Park:" + cur.green;
-  document.getElementById("carbon_per_stat").innerText = "Avg Carbon:\n" + average(cur_stat);
+  document.getElementById("carbon_per_stat").innerText = "Avg Carbon:\n" + cur_carbon;
   document.getElementById("unemployment_stat").innerText = "Unemployment:\n" + unemployment;
 
+  if (unemployment < 1) {
+    if (cur_carbon < current_best_carbon){
+      current_best_carbon = cur_carbon;
+      current_best_blocks = JSON.parse(JSON.stringify(blocks));
+    }
+  }
 
 }
 
