@@ -125,6 +125,7 @@ function reset() {
 }
 
 function loadBest() {
+  document.getElementById('placement_value').innerHTML = "";
   document.getElementById("residence_button").classList.remove('active');
   document.getElementById("commercial_button").classList.remove('active');
   document.getElementById("park_button").classList.remove('active');
