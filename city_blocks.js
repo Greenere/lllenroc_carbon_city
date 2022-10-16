@@ -1,3 +1,6 @@
+const random_walk_num = 100;
+const histo_bin_num = 20;
+
 // Generate basic blocks
 const block_num = 10;
 function get_coordinates(index) {
@@ -135,7 +138,7 @@ const color_scale = (x) => {
 
 function update_counts_and_carbon(){
   block_counts.push(get_statistics(blocks));
-  carbon_stats.push(get_carbons(blocks, 1000));
+  carbon_stats.push(get_carbons(blocks, random_walk_num));
   if (block_counts.length > stat_size){
       block_counts.shift();
   }
@@ -149,7 +152,7 @@ function update_card_texts(){
   if (carbon_stats.length > 0) {
     cur_stat = carbon_stats[carbon_stats.length -1];
   } else {
-    cur_stat = get_carbons(blocks, 1000);
+    cur_stat = get_carbons(blocks, random_walk_num);
   }
   const average = array => array.reduce((a, b) => a + b) / array.length;
   const unemployment = cur.commercial > cur.residence? 0: cur.residence - cur.commercial;

@@ -4,6 +4,7 @@ const carbon_width =
   svg_carbon.attr("width") - carbon_margin.left - carbon_margin.right;
 const carbon_height =
   svg_carbon.attr("height") - carbon_margin.top - carbon_margin.bottom;
+const main_color = '#ff006e';
 
 const carbon_chart_labels = svg_carbon
 .append("g")
@@ -35,13 +36,15 @@ carbon_chart.append("text")
 .attr("x", 850)
 .attr("y", 430)
 .attr("text-anchor","middle")
-.text("Iteration");
+.text("Iteration")
+.attr('fill', 'slategray');
 carbon_chart.append("text") 
 .attr("x", -30)
 .attr("y", 180)
 .attr("transform",`rotate(-90, -30 ${carbon_height / 2})`)
 .attr("text-anchor","middle")
-.text("Carbon Emissions")
+.text("Carbon Emissions >>")
+.attr('fill', 'slategray')
 
 function get_emission_data(carbon_stats){
   var carbon_emission_data = new Array();
@@ -73,7 +76,7 @@ function update_carbon_chart() {
         .attr("cy", (d) => emission_scale(d.emission))
         .attr("r", 5)
         .attr("opaicty", 0.8)
-        .attr("fill", "red");
+        .attr("fill", main_color);
     },
     (update)=>{
       update.attr("cx", (d) => iteration_scale(d.iteration))
@@ -89,7 +92,7 @@ function update_carbon_chart_histogram() {
   histo = d3.histogram()
   .value(d=>d)
   .domain(carbon_range)
-  .thresholds(100)
+  .thresholds(histo_bin_num)
   for (i = 0; i < carbon_stats.length; i++){
     data = carbon_stats[i]
 
@@ -107,13 +110,29 @@ function update_carbon_chart_histogram() {
         .attr("cy", (d) => emission_scale(d.x0))
         .attr("r", (d)=>size_scale(d.length))
         .attr("opaicty", 0.5)
-        .attr("fill", "red");
+        .attr("fill", main_color);
     },
     (update)=>{
       update.attr("cx", iteration_scale(i))
       .attr("cy", (d) => emission_scale(d.x0))
       .attr("r", (d)=>size_scale(d.length))
     });
+  }
+  if (carbon_stats.length > 0){
+  carbon_chart_labels.selectAll("text.indicator")
+  .data([carbon_stats.length-1])
+  .join((enter)=>{
+    enter.append('text')
+    .attr('class','indicator')
+    .attr('x', d=>iteration_scale(d))
+    .attr('y', -10)
+    .attr('fill', main_color)
+    .attr('text-anchor','middle')
+    .text('current')
+  },
+  (update)=>{
+    update.attr('x', d=>iteration_scale(d))
+  })
   }
 }
 

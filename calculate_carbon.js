@@ -6,6 +6,9 @@ const walk_unit_carbon = 1;
 const pub_unit_carbon = 2;
 const car_unit_carbon = 3;
 
+const bus_threshold = 2;
+const car_threshold = 4;
+
 function get_commutation_carbon(distance){
     if (distance > 5) {
         return car_unit_carbon * distance;
