@@ -130,6 +130,14 @@ function loadBest() {
   document.getElementById("commercial_button").classList.remove('active');
   document.getElementById("park_button").classList.remove('active');
   document.getElementById("remove_button").classList.remove('active');
+
+  if (current_best_blocks != null){
+    blocks = JSON.parse(JSON.stringify(current_best_blocks));
+  }
+  update_blocks();
+  update_card_texts();
+  update_counts_and_carbon();
+  update_carbon_chart_histogram();
 }
 
 var block_counts = new Array();
@@ -189,7 +197,7 @@ function update_card_texts(){
   document.getElementById("carbon_per_stat").innerText = "Avg Carbon:\n" + cur_carbon;
   document.getElementById("unemployment_stat").innerText = "Unemployment:\n" + unemployment;
 
-  if (unemployment < 1) {
+  if (unemployment < 1 && cur.residence > target_residence - 1) {
     if (cur_carbon < current_best_carbon){
       current_best_carbon = cur_carbon;
       current_best_blocks = JSON.parse(JSON.stringify(blocks));
