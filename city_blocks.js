@@ -23,6 +23,16 @@ function get_index(x, y) {
 
 var current_placement = 0;
 
+function changePlacement0() {
+  current_placement = 0;
+  document.getElementById('placement_value').innerHTML = "Remove";
+  // change icon buttons active status
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.add('active');
+}
+
 function changePlacement1() {
   current_placement = 1;
   document.getElementById('placement_value').innerHTML = "Residence";
@@ -67,6 +77,14 @@ function random() {
   document.getElementById("commercial_button").classList.remove('active');
   document.getElementById("park_button").classList.remove('active');
   document.getElementById("remove_button").classList.remove('active');
+
+  blocks.forEach(d=>{
+    d.value = Math.round(Math.random()*3);
+  })
+  update_blocks();
+  update_card_texts();
+  update_counts_and_carbon();
+  update_carbon_chart_histogram();
 }
 function reset() {
   document.getElementById('placement_value').innerHTML = "";
@@ -75,6 +93,13 @@ function reset() {
   document.getElementById("commercial_button").classList.remove('active');
   document.getElementById("park_button").classList.remove('active');
   document.getElementById("remove_button").classList.remove('active');
+  blocks.forEach(d=>{
+    d.value = 0;
+  })
+  update_blocks();
+  update_card_texts();
+  update_counts_and_carbon();
+  update_carbon_chart_histogram();
 }
 
 
@@ -107,6 +132,35 @@ const color_scale = (x) => {
   }
   return "white";
 };
+
+function update_counts_and_carbon(){
+  block_counts.push(get_statistics(blocks));
+  carbon_stats.push(get_carbons(blocks, 1000));
+  if (block_counts.length > stat_size){
+      block_counts.shift();
+  }
+  if (carbon_stats.length > stat_size){
+      carbon_stats.shift();
+  }
+}
+
+function update_card_texts(){
+  cur = get_statistics(blocks);
+  if (carbon_stats.length > 0) {
+    cur_stat = carbon_stats[carbon_stats.length -1];
+  } else {
+    cur_stat = get_carbons(blocks, 1000);
+  }
+  const average = array => array.reduce((a, b) => a + b) / array.length;
+  const unemployment = cur.commercial > cur.residence? 0: cur.residence - cur.commercial;
+  document.getElementById("res_block_stat").innerText = "Residence:" + cur.residence;
+  document.getElementById("com_block_stat").innerText = "Commercial:" + cur.commercial;
+  document.getElementById("park_block_stat").innerText = "Park:" + cur.green;
+  document.getElementById("carbon_per_stat").innerText = "Avg Carbon:\n" + average(cur_stat);
+  document.getElementById("unemployment_stat").innerText = "Unemployment:\n" + unemployment;
+
+
+}
 
 function update_blocks() {
   block_group
@@ -142,14 +196,8 @@ function update_blocks() {
             let index = get_index(target.datum().x, target.datum().y);
             blocks[index].value = current_placement;
             update_blocks();
-            block_counts.push(get_statistics(blocks));
-            carbon_stats.push(get_carbons(blocks, 100));
-            if (block_counts.length > stat_size){
-                block_counts.shift();
-            }
-            if (carbon_stats.length > stat_size){
-                carbon_stats.shift();
-            }
+            update_card_texts();
+            update_counts_and_carbon();
             update_carbon_chart_histogram();
            })
       },
@@ -160,7 +208,7 @@ function update_blocks() {
 }
 
 update_blocks();
-
+update_card_texts();
 
 // console.log(get_carbons(blocks, 10));
 // console.log(get_statistics(blocks));
