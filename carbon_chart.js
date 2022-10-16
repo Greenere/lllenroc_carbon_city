@@ -1,5 +1,5 @@
 const svg_carbon = d3.select("svg#carbon_chart");
-const carbon_margin = { left: 50, right: 50, top: 50, bottom: 50 };
+const carbon_margin = { left: 100, right: 100, top: 50, bottom: 50 };
 const carbon_width =
   svg_carbon.attr("width") - carbon_margin.left - carbon_margin.right;
 const carbon_height =
