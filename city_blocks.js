@@ -26,14 +26,50 @@ var current_placement = 0;
 function changePlacement1() {
   current_placement = 1;
   document.getElementById('placement_value').innerHTML = "Residence";
+  // change icon buttons active status
+  document.getElementById("residence_button").classList.add('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.remove('active');
 }
 function changePlacement2() {
   current_placement = 2;
   document.getElementById('placement_value').innerHTML = "Commercial";
+  // change icon buttons active status
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.add('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.remove('active');
 }
 function changePlacement3() {
   current_placement = 3;
-  document.getElementById('placement_value').innerHTML = "Green";
+  document.getElementById('placement_value').innerHTML = "Park";
+  // change icon buttons active status
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.add('active');
+  document.getElementById("remove_button").classList.remove('active');
+}
+function remove() {
+// change icon buttons active status
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.add('active');
+}
+function random() {
+// remove icon buttons active status
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.remove('active');
+}
+function reset() {
+// remove icon buttons active status
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.remove('active');
 }
 
 
