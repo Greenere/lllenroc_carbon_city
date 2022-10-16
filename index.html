@@ -19,7 +19,6 @@
   <body>
 
     <div class="container pt-5">
-
       <div class="row" style="height:auto">
         <div class="col-sm-1"></div> 
 
@@ -130,9 +129,39 @@
               </tr>
               <tr>
                 <td>
-                  <!-- Reset -->
+                  <!-- Load best planning -->
                   <button type="button" class="btn btn-outline-secondary col-7 mx-auto" onclick="loadBest()">Load Best
                   </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <!-- Set residence -->
+                  <button type="button" class="btn btn-outline-secondary col-7 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="setTarget()">Set Target</button>
+                  <!-- Pop modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Set Target</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="mb-3">
+                              <label for="recipient-name" class="col-form-label">Set the target residence:</label>
+                              <input type="text" class="form-control" id="target_residence">
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button id="confirm_button" type="button" class="btn btn-primary" onclick="getTarget()">Confirm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </td>
               </tr>
             </tbody>

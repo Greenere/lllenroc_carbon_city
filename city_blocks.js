@@ -140,6 +140,25 @@ function loadBest() {
   update_carbon_chart_histogram();
 }
 
+
+function setTarget() {
+  document.getElementById('placement_value').innerHTML = "";
+  document.getElementById("residence_button").classList.remove('active');
+  document.getElementById("commercial_button").classList.remove('active');
+  document.getElementById("park_button").classList.remove('active');
+  document.getElementById("remove_button").classList.remove('active');
+}
+
+function getTarget() {
+
+  target_residence = document.getElementById("target_residence").value;
+  if (target_residence > 50 || target_residence < 1) {
+    alert("Set the target between 1 and 50");
+  }
+
+}
+
+
 var block_counts = new Array();
 var carbon_stats = new Array();
 const stat_size = 20;
