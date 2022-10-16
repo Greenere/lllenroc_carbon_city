@@ -51,13 +51,17 @@ function changePlacement3() {
   document.getElementById("remove_button").classList.remove('active');
 }
 function remove() {
+  document.getElementById('placement_value').innerHTML = "";
 // change icon buttons active status
   document.getElementById("residence_button").classList.remove('active');
   document.getElementById("commercial_button").classList.remove('active');
   document.getElementById("park_button").classList.remove('active');
   document.getElementById("remove_button").classList.add('active');
+
+  
 }
 function random() {
+  document.getElementById('placement_value').innerHTML = "";
 // remove icon buttons active status
   document.getElementById("residence_button").classList.remove('active');
   document.getElementById("commercial_button").classList.remove('active');
@@ -65,6 +69,7 @@ function random() {
   document.getElementById("remove_button").classList.remove('active');
 }
 function reset() {
+  document.getElementById('placement_value').innerHTML = "";
 // remove icon buttons active status
   document.getElementById("residence_button").classList.remove('active');
   document.getElementById("commercial_button").classList.remove('active');

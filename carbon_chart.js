@@ -32,7 +32,7 @@ carbon_chart_labels.selectAll('line.iteration_label')
 .attr('stroke', 'slategray')
 
 carbon_chart.append("text") 
-.attr("x", 1100)
+.attr("x", 1000)
 .attr("y", 430)
 .attr("text-anchor","middle")
 .text("Iteration");
