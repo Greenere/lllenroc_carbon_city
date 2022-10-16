@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="calculate_carbon.js"></script>
   </head>
 
@@ -132,36 +133,13 @@
                   <!-- Load best planning -->
                   <button type="button" class="btn btn-outline-secondary col-7 mx-auto" onclick="loadBest()">Load Best
                   </button>
+                  
+
                 </td>
               </tr>
               <tr>
                 <td>
-                  <!-- Set residence -->
-                  <button type="button" class="btn btn-outline-secondary col-7 mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="setTarget()">Set Target</button>
-                  <!-- Pop modal -->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Set Target</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="mb-3">
-                              <label for="recipient-name" class="col-form-label">Set the target residence:</label>
-                              <input type="text" class="form-control" id="target_residence">
-                            </div>
-                          </form>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button id="confirm_button" type="button" class="btn btn-primary" onclick="getTarget()">Confirm</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
+                  <button type="button" class="btn btn-outline-secondary col-7 mx-auto" onclick="setTarget()">Set Target</button>
                 </td>
               </tr>
             </tbody>
